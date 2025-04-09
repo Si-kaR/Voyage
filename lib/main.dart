@@ -14,14 +14,10 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          appBarTheme: const AppBarTheme(
-            iconTheme: IconThemeData(
-              color:Colors.black
-            ),
-            elevation: 0,
-            backgroundColor: Colors.white
-          )
-        ),
+            appBarTheme: const AppBarTheme(
+                iconTheme: IconThemeData(color: Colors.black),
+                elevation: 0,
+                backgroundColor: Colors.white)),
         home: Container());
   }
 }
