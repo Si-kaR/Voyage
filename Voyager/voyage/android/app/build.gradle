@@ -1,0 +1,196 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin" // Must come after Android/Kotlin plugins
+}
+
+// ✅ Local properties must come *after* plugins block
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new IllegalStateException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode') ?: '1'
+def flutterVersionName = localProperties.getProperty('flutter.versionName') ?: '1.0'
+
+android {
+    namespace = "com.example.voyage"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    defaultConfig {
+        applicationId = "com.example.voyage"
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutterVersionCode.toInteger()
+        versionName = flutterVersionName
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug
+        }
+    }
+
+    // Optional if you have Kotlin files in this dir
+    // sourceSets {
+    //     main.java.srcDirs += 'src/main/kotlin'
+    // }
+}
+
+flutter {
+    source = "../.."
+}
+
+
+
+
+
+
+
+
+// ===============================   CLEANED UP    =======================================================
+
+
+
+
+
+
+// ✅ Dependencies section if needed:
+// dependencies {
+//     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+// }
+
+
+// plugins {
+// // apply plugin: 'com.android.application'
+// // apply plugin: 'kotlin-android'
+// // apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+//     id "com.android.application"
+//     id "kotlin-android"
+//     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+//     id "dev.flutter.flutter-gradle-plugin"
+// }
+
+// android {
+//     namespace = "com.example.voyage"
+//     // compileSdkVersion 31
+//     compileSdk = flutter.compileSdkVersion
+//     ndkVersion = flutter.ndkVersion
+
+//     // compileOptions {
+//     //     sourceCompatibility JavaVersion.VERSION_1_8
+//     //     targetCompatibility JavaVersion.VERSION_1_8
+//     // }
+
+//     compileOptions {
+//         sourceCompatibility = JavaVersion.VERSION_1_8
+//         targetCompatibility = JavaVersion.VERSION_1_8
+//     }
+
+//     // kotlinOptions {
+//     //     jvmTarget = '1.8'
+//     // }
+//     kotlinOptions {
+//         jvmTarget = JavaVersion.VERSION_1_8.toString()
+//     }
+//     // kotlinOptions {
+//     //     jvmTarget = JavaVersion.VERSION_1_8
+//     // }
+
+
+//     defaultConfig {
+//         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+//         applicationId = "com.example.voyage"
+//         // You can update the following values to match your application needs.
+//         // For more information, see: https://flutter.dev/to/review-gradle-config.
+//         minSdk = flutter.minSdkVersion
+//         // targetSdkVersion 30
+//         targetSdk = flutter.targetSdkVersion
+//         // versionCode flutterVersionCode.toInteger()
+//         // versionCode = flutter.versionCode
+//         versionCode = flutterVersionCode.toInteger() // Seems thsi is more preferred
+
+//         // versionName flutterVersionName
+//         versionName = flutter.versionName
+//     }
+
+// // There but commented here ===== 
+// // Dunno it's purpose so I'm leaving it out since our flutter application 
+// // also didn't generate it by itself
+
+//     // sourceSets {
+//     //     main.java.srcDirs += 'src/main/kotlin'
+//     // }
+
+//     buildTypes {
+//         release {
+//             // TODO: Add your own signing config for the release build.
+//             // Signing with the debug keys for now, so `flutter run --release` works.
+//             signingConfig = signingConfigs.debug
+//         }
+//     }
+// }
+
+// flutter {
+//     source = "../.."
+// }
+
+
+// def localProperties = new Properties()
+// def localPropertiesFile = rootProject.file('local.properties')
+// if (localPropertiesFile.exists()) {
+//     localPropertiesFile.withReader('UTF-8') { reader ->
+//         localProperties.load(reader)
+//     }
+// }
+
+// def flutterRoot = localProperties.getProperty('flutter.sdk')
+// if (fluttert == null) {
+//     throw new IllegalStateException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+// }
+
+
+// // def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+// // if (flutterVersionCode == null) {
+// //     flutterVersionCode = '1'
+// // }
+// def flutterVersionCode = localProperties.getProperty('flutter.versionCode') ?: '1'
+
+
+// // def flutterVersionName = localProperties.getProperty('flutter.versionName')
+// // if (flutterVersionName == null) {
+// //     flutterVersionName = '1.0'
+// // }
+// def flutterVersionName = localProperties.getProperty('flutter.versionName') ?: '1.0'
+
+
+// // From starter file
+
+
+
+// // There but commented here ===== 
+// // I think the updated flutter version doesn't deal with dependencies this way 
+
+// // dependencies {
+// //     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+// // }
+// // //
